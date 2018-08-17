@@ -32,10 +32,10 @@ public class CookieHelper {
 		return driver.manage().getCookieNamed(name).getValue();
 	}
 
-	public void addCookie(String name, String value, String Domain,
+	public void addCookie(String name, String value, String domain,
 			String path, Date Expiry) {
 		driver.manage()
-				.addCookie(new Cookie(name, value, Domain, path, Expiry));
+				.addCookie(new Cookie(name, value, domain, path, Expiry));
 	}
 
 	public void addCookieToBrowser(Set<Cookie> cookies, String domain,
@@ -43,8 +43,7 @@ public class CookieHelper {
 		for (Cookie c : cookies) {
 			if (c != null) {
 				if (c.getDomain().contains(domain)) {
-					driver.manage().addCookie(
-							new Cookie(name, domain, value, path, Expiry));
+					addCookie(name, value, domain, path, Expiry);
 				}
 			}
 		}
